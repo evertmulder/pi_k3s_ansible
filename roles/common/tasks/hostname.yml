@@ -1,0 +1,14 @@
+---
+- name: "Change hostname"
+  hostname:
+    name: "{{hostname}}"
+  when: hostname is defined
+  notify:
+  - restart pi
+
+- name: Set the hostname in /etc/hosts too
+  template:
+    dest: "/etc/hosts"
+    src: hosts.j2
+  vars:
+    loopback_hostname: "{{hostname}}"

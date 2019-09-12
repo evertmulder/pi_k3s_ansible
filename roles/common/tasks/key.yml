@@ -1,0 +1,4 @@
+- name: "Add authorized key for pi"
+  authorized_key:
+    user: "pi"
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"

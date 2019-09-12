@@ -1,0 +1,8 @@
+---
+# Configure boot/config.txt values
+- name: Set gpu_mem in the boot/config.txt
+  boot_config:
+    name: gpu_mem
+    value: 16
+  notify:
+  - restart pi
