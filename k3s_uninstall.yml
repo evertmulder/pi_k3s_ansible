@@ -1,5 +1,25 @@
-- hosts: all
+---
+- hosts: nodes
   become: true
   tasks:
+
+  - name: Check if uninstaller exists
+    stat:
+      path: /usr/local/bin/k3s-agent-uninstall.sh
+    register: k3sagentuninstall
+
+  - name: Uninstall k3s-agent
+    shell: /usr/local/bin/k3s-agent-uninstall.sh
+    when: k3sagentuninstall.stat.exists
+
+- hosts: masters
+  become: true
+  tasks:
+  - name: Check if uninstaller exists
+    stat:
+      path: /usr/local/bin/k3s-uninstall.sh
+    register: k3suninstall
+
   - name: Uninstall k3s
     shell: /usr/local/bin/k3s-uninstall.sh
+    when: k3suninstall.stat.exists
