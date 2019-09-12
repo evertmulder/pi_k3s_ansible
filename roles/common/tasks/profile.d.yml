@@ -1,0 +1,5 @@
+- name: Copy profile.d script
+  copy:
+    dest: /etc/profile.d/aliases.sh
+    src: aliases.sh
+    mode: '0644'

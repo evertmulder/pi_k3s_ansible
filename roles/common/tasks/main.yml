@@ -3,3 +3,4 @@
 - import_tasks: key.yml
 - import_tasks: hostname.yml
 - import_tasks: internationalization.yml
+- import_tasks: profile.d.yml
